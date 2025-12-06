@@ -197,7 +197,9 @@ class SimplesearchPlugin extends Plugin
             }
         }
         //Drop unroutable pages
-        $this->collection->routable();
+        // Unroutable pages should be searchable right now. This is because some pages (files) on the site have been marked as `routable: false`, but should still show up in search results.
+        // TODO Come back later and either make this a configurable option, or make file pages routable (latter option is probably preferred, so direct links can be used if needed). If the latter option, be sure to test how this behavior works.
+//         $this->collection->routable();
         //Add modular pages again
         $this->collection->merge($modularPageCollection);
 
